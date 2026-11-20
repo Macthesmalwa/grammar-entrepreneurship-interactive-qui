@@ -1,0 +1,817 @@
+Here is a complete, single-file HTML quiz in a dark theme based on the workbook pages provided (Verbals: Participles & Participial Phrases and Working for Yourself: The Entrepreneurial Path).
+It includes 15 Multiple Choice Questions, 10 Fill-in-the-Blanks, and 5 Match the Following items (30 marks total). It prevents submission until all questions are answered, grades automatically, and gives detailed per-question feedback.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- htmlaunch:enhanced:v2 -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22hsl(61%2C72%25%2C58%25)%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22hsl(91%2C72%25%2C44%25)%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22url(%23g)%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20text-anchor%3D%22middle%22%20font-family%3D%22ui-sans-serif%2Csystem-ui%2C-apple-system%2CSegoe%20UI%2Csans-serif%22%20font-size%3D%2238%22%20font-weight%3D%22800%22%20fill%3D%22%23ffffff%22%3EG%3C%2Ftext%3E%3C%2Fsvg%3E">
+<meta name="theme-color" content="#7b1474">
+<meta name="description" content="Grammar &amp; Entrepreneurship Interactive Quiz | deployed with HTMLaunch">
+<link rel="canonical" href="https://Macthesmalwa.github.io/grammar-entrepreneurship-interactive-qui/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grammar &amp; Entrepreneurship Interactive Quiz">
+<meta property="og:title" content="Grammar &amp; Entrepreneurship Interactive Quiz">
+<meta property="og:description" content="Grammar &amp; Entrepreneurship Interactive Quiz | deployed with HTMLaunch">
+<meta property="og:url" content="https://Macthesmalwa.github.io/grammar-entrepreneurship-interactive-qui/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s.wordpress.com/mshots/v1/https%3A%2F%2FMacthesmalwa.github.io%2Fgrammar-entrepreneurship-interactive-qui%2F?w=1200&h=630">
+<meta property="og:image:alt" content="Grammar &amp; Entrepreneurship Interactive Quiz">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grammar &amp; Entrepreneurship Interactive Quiz">
+<meta name="twitter:description" content="Grammar &amp; Entrepreneurship Interactive Quiz | deployed with HTMLaunch">
+<meta name="twitter:image" content="https://s.wordpress.com/mshots/v1/https%3A%2F%2FMacthesmalwa.github.io%2Fgrammar-entrepreneurship-interactive-qui%2F?w=1200&h=630">
+<meta name="twitter:image:alt" content="Grammar &amp; Entrepreneurship Interactive Quiz">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammar & Entrepreneurship Interactive Quiz</title>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --correct-bg: rgba(34, 197, 94, 0.15);
+      --correct-border: #22c55e;
+      --wrong-bg: rgba(239, 68, 68, 0.15);
+      --wrong-border: #ef4444;
+      --input-bg: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .progress-bar-container {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .progress-text {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      color: var(--accent);
+      margin: 32px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--card-border);
+    }
+
+    .question-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .question-card.unanswered-highlight {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25);
+    }
+
+    .question-text {
+      font-weight: 600;
+      margin-bottom: 14px;
+      font-size: 1.05rem;
+    }
+
+    .sentence-highlight {
+      font-style: italic;
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    /* MCQ Options */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--input-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .option-label:hover {
+      border-color: var(--accent);
+    }
+
+    .option-label input[type="radio"] {
+      margin-top: 4px;
+      accent-color: var(--accent);
+      transform: scale(1.15);
+    }
+
+    /* Fill in the blanks */
+    .fill-input {
+      background: var(--input-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-primary);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 200px;
+      margin: 0 6px;
+      outline: none;
+    }
+
+    .fill-input:focus {
+      border-color: var(--accent);
+    }
+
+    /* Match the following */
+    .match-row {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 16px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .match-row:last-child {
+      border-bottom: none;
+    }
+
+    .match-term {
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .match-select {
+      background: var(--input-bg);
+      color: var(--text-primary);
+      border: 1px solid var(--card-border);
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      width: 100%;
+      outline: none;
+    }
+
+    .match-select:focus {
+      border-color: var(--accent);
+    }
+
+    /* Feedback Box */
+    .feedback {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      display: none;
+    }
+
+    .feedback.correct {
+      display: block;
+      background: var(--correct-bg);
+      border: 1px solid var(--correct-border);
+      color: #86efac;
+    }
+
+    .feedback.incorrect {
+      display: block;
+      background: var(--wrong-bg);
+      border: 1px solid var(--wrong-border);
+      color: #fca5a5;
+    }
+
+    /* Submit & Score Section */
+    .actions {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      color: #fff;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background: #334155;
+      color: #f8fafc;
+      margin-left: 12px;
+      display: none;
+    }
+
+    .btn-secondary:hover {
+      background: #475569;
+    }
+
+    #error-banner {
+      display: none;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid #f59e0b;
+      color: #fcd34d;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    #result-box {
+      display: none;
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 28px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    #result-box h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .score-breakdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }
+
+    .score-pill {
+      background: var(--input-bg);
+      border: 1px solid var(--card-border);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 650px) {
+      .match-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .fill-input {
+        width: 100%;
+        margin: 8px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Grammar & Entrepreneurship Quiz</h1>
+      <p>Topics: Verbals (Participles & Participial Phrases) and The Entrepreneurial Path &bull; Total Marks: 30</p>
+    </header>
+
+    <div class="progress-bar-container">
+      <span class="progress-text">Questions Answered: <span id="answered-count">0</span> / 30</span>
+      <span class="progress-text" style="color: var(--accent);">1 Mark Each</span>
+    </div>
+
+    <form id="quiz-form" novalidate>
+      <!-- SECTION A: 15 MCQs -->
+      <h2 class="section-title">Section A: Multiple Choice Questions (15 Marks)</h2>
+      <div id="mcq-container"></div>
+
+      <!-- SECTION B: 10 FILL IN THE BLANKS -->
+      <h2 class="section-title">Section B: Fill in the Blanks (10 Marks)</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 14px;">
+        Type the correct participle form of the verb given in parentheses.
+      </p>
+      <div id="fill-container"></div>
+
+      <!-- SECTION C: 5 MATCH THE FOLLOWING -->
+      <h2 class="section-title">Section C: Match the Following (5 Marks)</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 14px;">
+        Match each entrepreneurial trait with its accurate description.
+      </p>
+      <div class="question-card" id="match-card">
+        <div id="match-container"></div>
+        <div id="match-feedback" class="feedback"></div>
+      </div>
+
+      <div class="actions">
+        <div id="error-banner">Please answer all 30 questions before submitting! Unanswered questions are highlighted in yellow.</div>
+        <button type="submit" class="btn" id="submit-btn">Submit Quiz</button>
+        <button type="button" class="btn btn-secondary" id="reset-btn">Retake Quiz</button>
+      </div>
+    </form>
+
+    <div id="result-box">
+      <h2 id="final-score-title">Your Score: 0 / 30</h2>
+      <p id="final-grade-msg" style="color: var(--text-secondary); font-size: 1.05rem;"></p>
+      <div class="score-breakdown">
+        <div class="score-pill">MCQs: <span id="mcq-score">0</span> / 15</div>
+        <div class="score-pill">Fill in the Blanks: <span id="fill-score">0</span> / 10</div>
+        <div class="score-pill">Match the Following: <span id="match-score">0</span> / 5</div>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--text-secondary);">Scroll up to review detailed feedback for each question.</p>
+    </div>
+  </div>
+
+  <script>
+    // 1. DATA: 15 MCQs
+    const mcqData = [
+      {
+        q: "1. Which revision is the best replacement for the bold text?",
+        sentence: "Emily, <strong>sat by the window</strong>, watched the rain pour down in sheets.",
+        options: [
+          "Change the participial phrase to <strong>sitting by the window</strong>.",
+          "Change the participial phrase to <strong>sitting by the window and</strong>.",
+          "Place the participial phrase after the word <strong>sheets</strong>.",
+          "The sentence does not need to be revised."
+        ],
+        answer: 0,
+        explanation: "Emily is actively performing the action at the same time she watches the rain, so the present participial phrase 'sitting by the window' is required."
+      },
+      {
+        q: "2. Which revision is the best replacement for the bold text?",
+        sentence: "The walls <strong>that were painted brightly</strong> brightened up the room.",
+        options: [
+          "Change <strong>painted</strong> to <strong>painting</strong>.",
+          "Change <strong>that were painted brightly</strong> to <strong>being painting</strong>.",
+          "Insert the participle <strong>painted</strong> in front of <strong>walls</strong> and remove <strong>that were painted brightly</strong>.",
+          "Insert the participle <strong>painting</strong> in front of <strong>walls</strong> and remove <strong>that were painted brightly</strong>."
+        ],
+        answer: 2,
+        explanation: "Replacing the wordy clause with the past participle 'painted' before the noun ('The painted walls...') makes the sentence concise and grammatically smooth."
+      },
+      {
+        q: "3. Which revision is the best replacement for the bold text?",
+        sentence: "The children played in the park until sunset, <strong>being so excited</strong>.",
+        options: [
+          "Change <strong>being so excited</strong> to <strong>being excited</strong>.",
+          "Move <strong>being so excited</strong> in front of <strong>children</strong>.",
+          "Insert <strong>excited</strong> in front of <strong>children</strong> and remove <strong>being so excited</strong>.",
+          "The text is a correctly placed participial phrase."
+        ],
+        answer: 2,
+        explanation: "Placing the past participle 'excited' directly before 'children' ('The excited children...') removes wordiness and avoids a misplaced modifier."
+      },
+      {
+        q: "4. Which revision is the best replacement for the bold text?",
+        sentence: "Lisa celebrated her birthday with laughter and joy, <strong>friends surrounding her</strong>.",
+        options: [
+          "Change <strong>friends surrounding her</strong> to <strong>friends surrounded her</strong>.",
+          "Insert <strong>Surrounded by friends</strong> in front of <strong>Lisa</strong> and remove <strong>friends surrounding her</strong>.",
+          "Insert <strong>Surrounding by friends</strong> in front of <strong>Lisa</strong> and remove <strong>friends surrounding her</strong>.",
+          "The text is a correctly placed participial phrase."
+        ],
+        answer: 1,
+        explanation: "Starting the sentence with the participial phrase 'Surrounded by friends,' directly modifies 'Lisa' clearly and effectively."
+      },
+      {
+        q: "5. Which revision is the best replacement for the bold text?",
+        sentence: "The <strong>exhausted</strong> hiker finally reached the mountain peak.",
+        options: [
+          "Change <strong>exhausted</strong> to <strong>exhausting</strong>.",
+          "Insert <strong>exhausting</strong> after <strong>hiker</strong> and remove <strong>exhausted</strong>.",
+          "Insert <strong>being exhausting</strong> after <strong>peak</strong> and remove <strong>exhausted</strong>.",
+          "The text is a correctly placed participle."
+        ],
+        answer: 3,
+        explanation: "'Exhausted' is a past participle accurately describing how the hiker felt, placed right before the noun it modifies."
+      },
+      {
+        q: "6. Identify whether the highlighted participle in the sentence is present or past:",
+        sentence: "The students talked eagerly during lunch, <strong>excited</strong> about the science fair.",
+        options: ["Present participle", "Past participle"],
+        answer: 1,
+        explanation: "'Excited' ends in -ed and describes the state/feeling of the students, making it a past participle."
+      },
+      {
+        q: "7. Identify whether the highlighted participle in the sentence is present or past:",
+        sentence: "The car, <strong>speeding</strong> down the highway, passed us in a blur.",
+        options: ["Present participle", "Past participle"],
+        answer: 0,
+        explanation: "'Speeding' ends in -ing and shows ongoing action, making it a present participle."
+      },
+      {
+        q: "8. Identify whether the highlighted participle in the sentence is present or past:",
+        sentence: "<strong>Exhausted</strong> from the long day, Sarah collapsed onto her bed.",
+        options: ["Present participle", "Past participle"],
+        answer: 1,
+        explanation: "'Exhausted' ends in -ed and functions as a past participle modifying Sarah."
+      },
+      {
+        q: "9. Identify whether the highlighted participle in the sentence is present or past:",
+        sentence: "The chef, <strong>chopping</strong> vegetables skilfully, prepared a delicious meal.",
+        options: ["Present participle", "Past participle"],
+        answer: 0,
+        explanation: "'Chopping' ends in -ing and describes an active, ongoing action by the chef (present participle)."
+      },
+      {
+        q: "10. Identify whether the highlighted participle in the sentence is present or past:",
+        sentence: "Maha, tears <strong>falling</strong> down her cheeks, listened to the sad news.",
+        options: ["Present participle", "Past participle"],
+        answer: 0,
+        explanation: "'Falling' ends in -ing, functioning as a present participle modifying 'tears'."
+      },
+      {
+        q: "11. Identify whether the highlighted participle in the sentence is present or past:",
+        sentence: "The engineer moved back to Dammam, <strong>undecided</strong> about his future.",
+        options: ["Present participle", "Past participle"],
+        answer: 1,
+        explanation: "'Undecided' ends in -ed and functions as a past participle describing the engineer."
+      },
+      {
+        q: "12. What is a participle?",
+        options: [
+          "A verb form that functions as a noun ending in -ing.",
+          "A verb form that functions as an adjective to modify a noun or pronoun.",
+          "A word that connects two independent clauses.",
+          "The main action verb of a sentence."
+        ],
+        answer: 1,
+        explanation: "Participles are verbals (verb forms) that act as adjectives modifying nouns or pronouns."
+      },
+      {
+        q: "13. According to 'Working for Yourself: The Entrepreneurial Path', who are entrepreneurs?",
+        options: [
+          "Employees who strictly follow instructions at large corporations.",
+          "People who choose to work for themselves, creating businesses, services, or ideas that help others.",
+          "Investors who only lend money to banks without starting projects.",
+          "People who work solely for short-term personal gain."
+        ],
+        answer: 1,
+        explanation: "Entrepreneurs work for themselves by creating businesses, services, or ideas that benefit others and make a positive difference."
+      },
+      {
+        q: "14. Why do entrepreneurs take initiative, think creatively, and work hard?",
+        options: [
+          "Only to achieve immediate personal wealth.",
+          "To avoid working with other people.",
+          "Not just for personal gain, but to benefit others and build a stable, purposeful future.",
+          "Because they dislike planning and leadership."
+        ],
+        answer: 2,
+        explanation: "The text highlights that entrepreneurs work hard not merely for personal gain, but to benefit others and build a stable, purposeful future."
+      },
+      {
+        q: "15. Which of the following is NOT listed as one of the five core traits in 'What Makes an Entrepreneur?'",
+        options: [
+          "Values",
+          "Financial Stability",
+          "Problem-Solving",
+          "Micromanagement"
+        ],
+        answer: 3,
+        explanation: "The five traits listed are Values, Passion, Skills, Problem-Solving, and Financial Stability."
+      }
+    ];
+
+    // 2. DATA: 10 Fill in the Blanks (directly from pages 45 & 46)
+    const fillData = [
+      { before: "The", after: "stars illuminated the night sky.", verb: "sparkle", answers: ["sparkling"], explanation: "Present participle 'sparkling' modifies 'stars'." },
+      { before: "", after: "with pride, James accepted the award on stage.", verb: "beam", answers: ["beaming"], explanation: "Present participle 'Beaming' describes James's active expression." },
+      { before: "The", after: "leaves covered the ground in a colorful blanket.", verb: "fall", answers: ["fallen", "falling"], explanation: "Past participle 'fallen' (or present participle 'falling') modifies 'leaves'." },
+      { before: "Samir took a deep breath,", after: "by the task at hand.", verb: "overwhelm", answers: ["overwhelmed"], explanation: "Past participle 'overwhelmed' describes Samir's state." },
+      { before: "The", after: "mother waited anxiously for her child to return home.", verb: "worry", answers: ["worried", "worrying"], explanation: "Past participle 'worried' modifies 'mother'." },
+      { before: "The", after: "glass lay shattered on the floor.", verb: "break", answers: ["broken"], explanation: "Irregular past participle 'broken' modifies 'glass'." },
+      { before: "The students scratched their heads,", after: "by the riddle.", verb: "confuse", answers: ["confused"], explanation: "Past participle 'confused' modifies 'students'." },
+      { before: "The", after: "water was bubbling furiously on the stove.", verb: "boil", answers: ["boiling"], explanation: "Present participle 'boiling' describes the water in action." },
+      { before: "Hassan wandered aimlessly through the forest,", after: "in thought.", verb: "lose", answers: ["lost"], explanation: "Irregular past participle 'lost' modifies 'Hassan'." },
+      { before: "The", after: "water in the stream sounded soothing.", verb: "run", answers: ["running"], explanation: "Present participle 'running' modifies 'water'." }
+    ];
+
+    // 3. DATA: 5 Match the Following (from page 32)
+    const matchData = [
+      { id: "m1", trait: "1. Values", correctDesc: "Guided by strong values, such as integrity, responsibility, and service to others." },
+      { id: "m2", trait: "2. Passion", correctDesc: "Excited about ideas that improve people's lives." },
+      { id: "m3", trait: "3. Skills", correctDesc: "Using creativity, planning, communication, and leadership." },
+      { id: "m4", trait: "4. Problem-Solving", correctDesc: "Finding smart solutions and learning from challenges." },
+      { id: "m5", trait: "5. Financial Stability", correctDesc: "Managing money wisely to grow a successful and sustainable business." }
+    ];
+
+    const shuffledDescriptions = [
+      "Finding smart solutions and learning from challenges.",
+      "Using creativity, planning, communication, and leadership.",
+      "Guided by strong values, such as integrity, responsibility, and service to others.",
+      "Managing money wisely to grow a successful and sustainable business.",
+      "Excited about ideas that improve people's lives."
+    ];
+
+    // RENDER FUNCTIONS
+    function renderQuiz() {
+      // Render MCQs
+      const mcqContainer = document.getElementById("mcq-container");
+      mcqContainer.innerHTML = mcqData.map((item, idx) => `
+        <div class="question-card" id="mcq-card-${idx}">
+          <div class="question-text">${item.q}</div>
+          <span class="sentence-highlight">${item.sentence}</span>
+          <div class="options-list">
+            ${item.options.map((opt, oIdx) => `
+              <label class="option-label">
+                <input type="radio" name="mcq-${idx}" value="${oIdx}" onchange="updateProgress()" />
+                <span>${opt}</span>
+              </label>
+            `).join("")}
+          </div>
+          <div class="feedback" id="mcq-fb-${idx}"></div>
+        </div>
+      `).join("");
+
+      // Render Fill in the Blanks
+      const fillContainer = document.getElementById("fill-container");
+      fillContainer.innerHTML = fillData.map((item, idx) => `
+        <div class="question-card" id="fill-card-${idx}">
+          <div class="question-text">${idx + 16}. Verb: <strong>(${item.verb})</strong></div>
+          <div>
+            ${item.before ? `<span>${item.before}</span>` : ""}
+            <input type="text" class="fill-input" id="fill-input-${idx}" placeholder="Type participle..." oninput="updateProgress()" autocomplete="off" />
+            <span>${item.after}</span>
+          </div>
+          <div class="feedback" id="fill-fb-${idx}"></div>
+        </div>
+      `).join("");
+
+      // Render Match the Following
+      const matchContainer = document.getElementById("match-container");
+      matchContainer.innerHTML = matchData.map((item, idx) => `
+        <div class="match-row" id="match-row-${idx}">
+          <div class="match-term">${idx + 26}. ${item.trait.replace(/^\d+\.\s*/, "")}</div>
+          <div>
+            <select class="match-select" id="match-select-${idx}" onchange="updateProgress()">
+              <option value="">-- Select matching description --</option>
+              ${shuffledDescriptions.map(desc => `<option value="${desc}">${desc}</option>`).join("")}
+            </select>
+            <div class="feedback" id="match-fb-${idx}" style="margin-top:8px;"></div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // UPDATE ANSWERED COUNTER
+    function updateProgress() {
+      let count = 0;
+
+      // Check MCQs
+      mcqData.forEach((_, idx) => {
+        const selected = document.querySelector(`input[name="mcq-${idx}"]:checked`);
+        if (selected) {
+          count++;
+          document.getElementById(`mcq-card-${idx}`).classList.remove("unanswered-highlight");
+        }
+      });
+
+      // Check Fills
+      fillData.forEach((_, idx) => {
+        const val = document.getElementById(`fill-input-${idx}`).value.trim();
+        if (val !== "") {
+          count++;
+          document.getElementById(`fill-card-${idx}`).classList.remove("unanswered-highlight");
+        }
+      });
+
+      // Check Matches
+      let allMatched = true;
+      matchData.forEach((_, idx) => {
+        const val = document.getElementById(`match-select-${idx}`).value;
+        if (val !== "") {
+          count++;
+        } else {
+          allMatched = false;
+        }
+      });
+      if (allMatched) {
+        document.getElementById("match-card").classList.remove("unanswered-highlight");
+      }
+
+      document.getElementById("answered-count").textContent = count;
+      if (count === 30) {
+        document.getElementById("error-banner").style.display = "none";
+      }
+    }
+
+    // FORM SUBMISSION & GRADING
+    document.getElementById("quiz-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let unansweredElements = [];
+
+      // Validate MCQs
+      mcqData.forEach((_, idx) => {
+        const selected = document.querySelector(`input[name="mcq-${idx}"]:checked`);
+        const card = document.getElementById(`mcq-card-${idx}`);
+        if (!selected) {
+          card.classList.add("unanswered-highlight");
+          unansweredElements.push(card);
+        } else {
+          card.classList.remove("unanswered-highlight");
+        }
+      });
+
+      // Validate Fills
+      fillData.forEach((_, idx) => {
+        const val = document.getElementById(`fill-input-${idx}`).value.trim();
+        const card = document.getElementById(`fill-card-${idx}`);
+        if (val === "") {
+          card.classList.add("unanswered-highlight");
+          unansweredElements.push(card);
+        } else {
+          card.classList.remove("unanswered-highlight");
+        }
+      });
+
+      // Validate Matches
+      let matchIncomplete = false;
+      matchData.forEach((_, idx) => {
+        if (document.getElementById(`match-select-${idx}`).value === "") {
+          matchIncomplete = true;
+        }
+      });
+      const matchCard = document.getElementById("match-card");
+      if (matchIncomplete) {
+        matchCard.classList.add("unanswered-highlight");
+        unansweredElements.push(matchCard);
+      } else {
+        matchCard.classList.remove("unanswered-highlight");
+      }
+
+      // Block submission if any question is unanswered
+      if (unansweredElements.length > 0) {
+        document.getElementById("error-banner").style.display = "block";
+        unansweredElements[0].scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
+      document.getElementById("error-banner").style.display = "none";
+
+      // GRADE SECTION A: MCQs
+      let mcqScore = 0;
+      mcqData.forEach((item, idx) => {
+        const selectedVal = parseInt(document.querySelector(`input[name="mcq-${idx}"]:checked`).value, 10);
+        const fb = document.getElementById(`mcq-fb-${idx}`);
+        if (selectedVal === item.answer) {
+          mcqScore++;
+          fb.className = "feedback correct";
+          fb.innerHTML = `<strong>&#10003; Correct! (1/1)</strong> &mdash; ${item.explanation}`;
+        } else {
+          fb.className = "feedback incorrect";
+          fb.innerHTML = `<strong>&#10007; Incorrect (0/1)</strong> &mdash; Correct answer: <em>${item.options[item.answer]}</em>. ${item.explanation}`;
+        }
+      });
+
+      // GRADE SECTION B: Fill in the Blanks
+      let fillScore = 0;
+      fillData.forEach((item, idx) => {
+        const inputEl = document.getElementById(`fill-input-${idx}`);
+        const userAns = inputEl.value.trim().toLowerCase();
+        const fb = document.getElementById(`fill-fb-${idx}`);
+        if (item.answers.includes(userAns)) {
+          fillScore++;
+          fb.className = "feedback correct";
+          fb.innerHTML = `<strong>&#10003; Correct! (1/1)</strong> &mdash; ${item.explanation}`;
+        } else {
+          fb.className = "feedback incorrect";
+          fb.innerHTML = `<strong>&#10007; Incorrect (0/1)</strong> &mdash; Correct answer: <strong>${item.answers[0]}</strong>. ${item.explanation}`;
+        }
+      });
+
+      // GRADE SECTION C: Match the Following
+      let matchScore = 0;
+      matchData.forEach((item, idx) => {
+        const userChoice = document.getElementById(`match-select-${idx}`).value;
+        const fb = document.getElementById(`match-fb-${idx}`);
+        if (userChoice === item.correctDesc) {
+          matchScore++;
+          fb.className = "feedback correct";
+          fb.innerHTML = `<strong>&#10003; Correct! (1/1)</strong>`;
+        } else {
+          fb.className = "feedback incorrect";
+          fb.innerHTML = `<strong>&#10007; Incorrect (0/1)</strong> &mdash; Correct match: <em>${item.correctDesc}</em>`;
+        }
+      });
+
+      // CALCULATE & DISPLAY TOTAL SCORE
+      const totalScore = mcqScore + fillScore + matchScore;
+      const percentage = Math.round((totalScore / 30) * 100);
+
+      document.getElementById("mcq-score").textContent = mcqScore;
+      document.getElementById("fill-score").textContent = fillScore;
+      document.getElementById("match-score").textContent = matchScore;
+      document.getElementById("final-score-title").textContent = `Total Score: ${totalScore} / 30 (${percentage}%)`;
+
+      let message = "";
+      if (percentage >= 90) message = "Outstanding mastery of participles and entrepreneurship concepts!";
+      else if (percentage >= 75) message = "Great job! Review the highlighted feedback above to polish the remaining items.";
+      else if (percentage >= 50) message = "Good effort! Check the explanations above to strengthen your understanding.";
+      else message = "Keep practicing! Review the feedback for each question and try again.";
+
+      document.getElementById("final-grade-msg").textContent = message;
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: "smooth" });
+
+      // Lock inputs and show Retake button
+      document.querySelectorAll("input, select").forEach(el => el.disabled = true);
+      document.getElementById("submit-btn").style.display = "none";
+      document.getElementById("reset-btn").style.display = "inline-block";
+    });
+
+    // RESET QUIZ
+    document.getElementById("reset-btn").addEventListener("click", function () {
+      document.getElementById("quiz-form").reset();
+      document.querySelectorAll("input, select").forEach(el => el.disabled = false);
+      document.querySelectorAll(".feedback").forEach(fb => {
+        fb.className = "feedback";
+        fb.innerHTML = "";
+      });
+      document.getElementById("result-box").style.display = "none";
+      document.getElementById("submit-btn").style.display = "inline-block";
+      document.getElementById("reset-btn").style.display = "none";
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Initialize quiz on page load
+    renderQuiz();
+  </script>
+</body>
+</html>
+
+Key Features Included
+ * Complete Coverage of Your Pages: Covers participial phrase revisions (pages 46–47), present vs. past participle identification (page 48), verb-to-participle fill-in-the-blanks (pages 45–46), and entrepreneurial traits matching & concepts (page 32).
+ * Strict Submission Guard: Tracks progress in a sticky header (0 / 30) and blocks submission if any question is left blank, automatically scrolling to and highlighting the first unanswered question.
+ * Instant Marks & Explanations: Calculates section-wise and total scores out of 30, provides detailed explanations for every answer, and includes a Retake Quiz button.
